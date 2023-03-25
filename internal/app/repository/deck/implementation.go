@@ -68,7 +68,7 @@ func (cr cr) DrawDeckCards(id uuid.UUID, count int) (*entity.Deck, error) {
 		return nil, result.Error
 	}
 	// get drawn cards
-	result = cr.c.Database().Get().Preload("Card").Where("deck_id = ? AND drawn = ?", id, true).Order("\"order\" DESC").Find(&cds)
+	result = cr.c.Database().Get().Preload("Card").Where("deck_id = ? AND \"order\" IN ?", id, orders).Order("\"order\" DESC").Find(&cds)
 	return &entity.Deck{
 		BaseModel: entity.BaseModel{
 			ID: id,

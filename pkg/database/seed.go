@@ -17,17 +17,16 @@ func SeedTemplates(tx *gorm.DB) error {
 			code = "A"
 		}
 		if i == 11 {
-			value = "KING"
-			code = "K"
+			value = "JACK"
+			code = "J"
 		}
 		if i == 12 {
 			value = "QUEEN"
 			code = "Q"
-
 		}
 		if i == 13 {
-			value = "JACK"
-			code = "J"
+			value = "KING"
+			code = "K"
 		}
 		batch = append(batch, &entity.CardTemplate{
 			Value: entity.Value(value),
