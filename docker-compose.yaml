@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    networks:
+      - webnet
+    container_name: postgres_db
+    # restart: always
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deck_cards
+  app:
+    networks:
+      - webnet
+    container_name: app
+    restart: on-failure
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      ENV: production
+      CONFIG_TYPE: local
+    depends_on:
+      - db
+
+networks:
+  webnet:

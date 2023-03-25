@@ -1,0 +1,17 @@
+app:
+  env: test
+  config:
+    type: local
+  db:
+    username: "postgres"
+    password: "postgres"
+    database: "deck_cards_test"
+    host: "localhost"
+    port: 5432
+    log: true
+    sync: false
+  rest:
+    port: "8000"
+  log:
+    json: true
+    debug: false
