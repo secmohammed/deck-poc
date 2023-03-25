@@ -126,8 +126,4 @@ func TestItShouldNotDrawCardsWithMoreThanAvailableAtOpenDeck(t *testing.T) {
 	writer := tests.MakeRequest("PATCH", fmt.Sprintf("/api/decks/%s?count=10", deck.ID.String()), nil, router(app))
 	assert.Equal(t, http.StatusNotFound, writer.Code)
 	assert.Contains(t, writer.Body.String(), "cannot draw cards more than the available ones")
-	//var res map[string]interface{}
-	//err := json.Unmarshal(writer.Body.Bytes(), &res)
-	//assert.NoError(t, err)
-	//assert.Equal(t, 2, len(res["cards"].([]interface{})))
 }

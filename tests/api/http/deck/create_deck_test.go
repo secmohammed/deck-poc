@@ -60,7 +60,7 @@ func TestItShouldCreateDeckWithShuffling(t *testing.T) {
 	err := json.Unmarshal(writer.Body.Bytes(), &res)
 	assert.NoError(t, err)
 	assert.Equal(t, val, res.Data["shuffled"].(bool))
-	//testing that it really shuffles is non-determined, might be good idea to take a sample and validate against.
+	// testing that it really shuffles is non-determined, might be good idea to take a sample and validate against.
 }
 func TestItShouldCreateDeckWithAllDecks(t *testing.T) {
 	val := true
