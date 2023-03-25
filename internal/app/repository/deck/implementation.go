@@ -1,7 +1,7 @@
 package deck
 
 import (
-	"errors"
+	"fmt"
 	"github.com/google/uuid"
 	"github.com/secmohammed/deck-poc/container"
 	"github.com/secmohammed/deck-poc/internal/app/dto"
@@ -43,7 +43,7 @@ func (cr cr) DrawDeckCards(id uuid.UUID, count int) (*entity.Deck, error) {
 			return nil, result.Error
 		}
 		if len(cds) != count {
-			return nil, errors.New("cannot draw cards more than the available ones")
+			return nil, fmt.Errorf("we cannot draw %d cards as the available cards to draw is: %d", count, len(cds))
 		}
 
 	} else {
@@ -55,7 +55,7 @@ func (cr cr) DrawDeckCards(id uuid.UUID, count int) (*entity.Deck, error) {
 			return nil, result.Error
 		}
 		if len(cds) != count {
-			return nil, errors.New("all cards are already drawn")
+			return nil, fmt.Errorf("we cannot draw %d cards as the available cards to draw is: %d", count, len(cds))
 		}
 	}
 	var orders []int
